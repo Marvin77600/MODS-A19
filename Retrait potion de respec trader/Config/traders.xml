@@ -1,0 +1,43 @@
+<configs>
+
+	<remove xpath="/traders/trader_info[@id='1']/tier_items[1]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='1']/tier_items[2]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='1']/tier_items[3]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='1']/tier_items[4]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='6']/tier_items[1]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='6']/tier_items[2]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='6']/tier_items[3]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='6']/tier_items[4]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='2']/tier_items[1]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='2']/tier_items[2]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='2']/tier_items[3]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='2']/tier_items[4]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='7']/tier_items[1]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='7']/tier_items[2]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='7']/tier_items[3]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='7']/tier_items[4]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='8']/tier_items[1]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='8']/tier_items[2]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='8']/tier_items[3]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+	
+	<remove xpath="/traders/trader_info[@id='8']/tier_items[4]/item[@name='drinkJarGrandpasForgettingElixir']"/>
+
+</configs>

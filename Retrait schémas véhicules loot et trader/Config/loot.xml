@@ -1,0 +1,7 @@
+<configs>
+
+	<remove xpath="//lootgroup[@name='commonBooks']/item[@group='schematicsVehiclesCommon']"/>
+	
+	<remove xpath="//lootgroup[@name='rareBooks']/item[@group='schematicsVehiclesRare']"/>
+	
+</configs>
