@@ -1,0 +1,382 @@
+<configs>
+	
+	<append xpath="//buff[@name='buffStatusCheck01']/effect_group[1]">
+	
+		<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffVariableSommeil"/>
+		<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffVariable"/>
+	
+	</append>
+	
+	<append xpath="//buff[@name='buffStatusCheck01']">
+	
+		<effect_group name="Not On Bed but Crouch">
+			<requirement name="NotHasBuff" buff="buffOnBed"/>
+			<requirement name="HasBuff" buff="buffCrouching"/>
+			
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0" fade="1"/>
+		</effect_group>
+	
+	</append>
+	
+	<append xpath="//buff[@name='god']/effect_group">
+	
+		<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$Sommeil" operation="set" value="0"/>
+	
+	</append>
+	
+	<append xpath="/buffs">
+		
+		<buff name="buffVariable" remove_on_death="false" hidden="true">
+			<stack_type value="ignore"/>
+			<update_rate value="102"/>
+			<duration value="0"/>
+			<effect_group name="Not on Bed">
+				<requirement name="NotHasBuff" buff="buffOnBed"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Sommeil" operation="add" value="@$MetabolismDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$Sommeil" operation="add" value="1">
+					<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="99"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<effect_group name="On Bed but Stand">
+				<requirement name="HasBuff" buff="buffOnBed"/>
+				<requirement name="NotHasBuff" buff="buffCrouching"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Sommeil" operation="add" value="@$MetabolismDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$Sommeil" operation="add" value="1">
+					<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="99"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0" fade="1"/>
+			</effect_group>
+			
+			<effect_group name="On Death">
+				<triggered_effect trigger="onSelfRespawn" action="ModifyCVar" cvar="$Sommeil" operation="set" value="1"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffVariableSommeil" remove_on_death="false" hidden="true">
+			<display_value_key value="{0:0}%"/>
+			<display_value value="$Sommeil"/>
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<effect_group name="0">
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="Equals" value="0"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0" fade="1">
+					<requirement name="NotHasBuff" buff="buffOnBed"/>
+					<requirement name="NotHasBuff" buff="buffCrouching"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="Dying" intensity="0" fade="1" />
+			</effect_group>
+			
+			<effect_group name="1 to 10">
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="GTE" value="1"/>
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="10"/>
+				
+				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="Dying" intensity="0.1" fade="1" /> -->
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0" fade="1">
+					<requirement name="NotHasBuff" buff="buffOnBed"/>
+					<requirement name="NotHasBuff" buff="buffCrouching"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffSommeilGreen"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilYellow"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilRed"/>
+			</effect_group>
+			
+			<effect_group name="11 to 20">
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="GTE" value="11"/>
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="20"/>
+				
+				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="Dying" intensity="0.2" fade="1" /> -->
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0" fade="1">
+					<requirement name="NotHasBuff" buff="buffOnBed"/>
+					<requirement name="NotHasBuff" buff="buffCrouching"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffSommeilGreen"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilYellow"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilRed"/>
+			</effect_group>
+			
+			<effect_group name="21 to 30">
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="GTE" value="21"/>
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="30"/>
+				
+				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="Dying" intensity="0.3" fade="1" /> -->
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0" fade="1">
+					<requirement name="NotHasBuff" buff="buffOnBed"/>
+					<requirement name="NotHasBuff" buff="buffCrouching"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffSommeilGreen"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilYellow"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilRed"/>
+			</effect_group>
+			
+			<effect_group name="31 to 40">
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="GTE" value="31"/>
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="40"/>
+				
+				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="Dying" intensity="0.4" fade="1" /> -->
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0" fade="1">
+					<requirement name="NotHasBuff" buff="buffOnBed"/>
+					<requirement name="NotHasBuff" buff="buffCrouching"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffSommeilGreen"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilYellow"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilRed"/>
+			</effect_group>
+			
+			<effect_group name="41 to 50">
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="GTE" value="41"/>
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="50"/>
+				
+				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="Dying" intensity="0.5" fade="1" /> -->
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0" fade="1">
+					<requirement name="NotHasBuff" buff="buffOnBed"/>
+					<requirement name="NotHasBuff" buff="buffCrouching"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffSommeilGreen"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilYellow"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilRed"/>
+			</effect_group>
+			
+			<effect_group name="51 to 60">
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="GTE" value="51"/>
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="60"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0.1" fade="1">
+					<requirement name="NotHasBuff" buff="buffOnBed"/>
+					<requirement name="NotHasBuff" buff="buffCrouching"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffSommeilYellow"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilGreen"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilRed"/>
+				
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="0.05"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.05"/>
+			</effect_group>
+			
+			<effect_group name="61 to 71">
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="GTE" value="61"/>
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="70"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0.2" fade="1">
+					<requirement name="NotHasBuff" buff="buffOnBed"/>
+					<requirement name="NotHasBuff" buff="buffCrouching"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffSommeilYellow"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilGreen"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilRed"/>
+				
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="0.10"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.10"/>
+			</effect_group>
+			
+			<effect_group name="71 to 80">
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="GTE" value="71"/>
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="80"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0.3" fade="1">
+					<requirement name="NotHasBuff" buff="buffOnBed"/>
+					<requirement name="NotHasBuff" buff="buffCrouching"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffSommeilYellow"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilGreen"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilRed"/>
+				
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="0.15"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.15"/>
+			</effect_group>
+			
+			<effect_group name="81 to 90">
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="GTE" value="81"/>
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="90"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0.4" fade="1">
+					<requirement name="NotHasBuff" buff="buffOnBed"/>
+					<requirement name="NotHasBuff" buff="buffCrouching"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffSommeilRed"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilGreen"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilYellow"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffBlur81/90"/>
+				
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="0.20"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.20"/>
+				<passive_effect name="CarryCapacity" operation="base_subtract" value="9"/>
+			</effect_group>
+			
+			<effect_group name="91 to 100">
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="GTE" value="91"/>
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="100"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0.5" fade="1">
+					<requirement name="NotHasBuff" buff="buffOnBed"/>
+					<requirement name="NotHasBuff" buff="buffCrouching"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffSommeilRed"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilGreen"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSommeilYellow"/>
+				
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="0.25"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.25"/>
+				<passive_effect name="CarryCapacity" operation="base_subtract" value="18"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffSommeilGreen" name_key="Fatigue" description_key="Fatigue" icon="ui_game_symbol_map_bed" icon_color="0,255,0">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<display_value_key value="{0:0}%"/>
+			<display_value value="$Sommeil"/>
+			<update_rate value="300"/>
+			<effect_group name="Start">
+				
+			</effect_group>
+		</buff>
+		
+		<buff name="buffSommeilYellow" name_key="Fatigue" description_key="Fatigue" icon="ui_game_symbol_map_bed" icon_color="255,255,0">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<display_value_key value="{0:0}%"/>
+			<display_value value="$Sommeil"/>
+			<update_rate value="300"/>
+			<effect_group name="Start">
+				
+			</effect_group>
+		</buff>
+		
+		<buff name="buffSommeilRed" name_key="Reposez-vous !" description_key="Votre vue est très altérée, reposez-vous !" icon="ui_game_symbol_map_bed" icon_color="255,0,0">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<display_value_key value="{0:0}%"/>
+			<display_value value="$Sommeil"/>
+			<update_rate value="300"/>
+			<effect_group name="81 à 90">
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="GTE" value="81"/>
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="90"/>
+				<passive_effect name="AttributeLevel" tags="attFortitude" operation="base_subtract" value="1"/>
+				<passive_effect name="AttributeLevel" tags="attAgility" operation="base_subtract" value="1"/>
+				<passive_effect name="AttributeLevel" tags="attStrength" operation="base_subtract" value="1"/>
+				<passive_effect name="AttributeLevel" tags="attPerception" operation="base_subtract" value="1"/>
+				<passive_effect name="AttributeLevel" tags="attIntellect" operation="base_subtract" value="1"/>
+			</effect_group>
+			
+			<effect_group name="91 à 100">
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="GTE" value="91"/>
+				<requirement name="CVarCompare" cvar="$Sommeil" operation="LTE" value="100"/>
+				<passive_effect name="AttributeLevel" tags="attFortitude" operation="base_subtract" value="2"/>
+				<passive_effect name="AttributeLevel" tags="attAgility" operation="base_subtract" value="2"/>
+				<passive_effect name="AttributeLevel" tags="attStrength" operation="base_subtract" value="2"/>
+				<passive_effect name="AttributeLevel" tags="attPerception" operation="base_subtract" value="2"/>
+				<passive_effect name="AttributeLevel" tags="attIntellect" operation="base_subtract" value="2"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffOnBed" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="3"/>
+			<update_rate value="2"/>
+			<effect_group name="On Bed but Crouch">
+				<requirement name="HasBuff" buff="buffCrouching"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$Sommeil" operation="subtract" value="2">
+					<requirement name="CVarCompare" cvar="$Sommeil" operation="GTE" value="2"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="1" fade="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="1" fade="1"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="11" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group name="Start">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Sommeil" operation="set" value="11"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="21" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group name="Start">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Sommeil" operation="set" value="21"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="31" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group name="Start">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Sommeil" operation="set" value="31"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="41" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group name="Start">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Sommeil" operation="set" value="41"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="51" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group name="Start">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Sommeil" operation="set" value="51"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="61" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group name="Start">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Sommeil" operation="set" value="61"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="71" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group name="Start">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Sommeil" operation="set" value="71"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="81" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group name="Start">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Sommeil" operation="set" value="81"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="91" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group name="Start">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Sommeil" operation="set" value="91"/>
+			</effect_group>
+		</buff>
+		
+	</append>
+	
+	<insertAfter xpath="//buff[@name='buffCrouching']/effect_group/triggered_effect[@trigger='onSelfStand']">
+	
+		<triggered_effect trigger="onSelfStand" action="ModifyScreenEffect" effect_name="FadeToBlack" intensity="0" fade="2"/>
+		<triggered_effect trigger="onSelfStand" action="RemoveBuff" buff="buffOnBed"/>
+	
+	</insertAfter>
+	
+</configs>

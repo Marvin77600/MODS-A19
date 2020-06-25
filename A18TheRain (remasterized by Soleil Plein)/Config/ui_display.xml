@@ -1,0 +1,11 @@
+<configs>
+
+	<append xpath="/ui_display_info/item_display">
+	
+		<item_display_info display_type="ABC" display_group="groupABC">
+			<display_entry name="contaminatedCounter" title_key="contaminatedCounter"/>
+		</item_display_info>
+	
+	</append>
+
+</configs>	

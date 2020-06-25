@@ -1,0 +1,164 @@
+<configs>
+
+	<remove xpath="/items/item[@name='apparelHazmatMaster']"/>
+	<remove xpath="/items/item[@name='apparelHazmatBoots']"/>
+	<remove xpath="/items/item[@name='apparelHazmatPants']"/>
+	<remove xpath="/items/item[@name='apparelHazmatJacket']"/>
+	<remove xpath="/items/item[@name='apparelHazmatGloves']"/>
+	<remove xpath="/items/item[@name='apparelHazmatMask']"/>
+	
+	<append xpath="/items">
+
+		<item name="apparelHazmatMaster">
+			<property name="CreativeMode" value="None"/>
+			<property name="CustomIcon" value="apparelHazmatBoots"/>
+			<property name="DisplayType" value="clothing"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="Encumbrance" value=".03"/>
+			<property name="Material" value="MmilitaryFiber"/>
+			<property name="DegradationBreaksAfter" value="false"/>
+			<property name="Weight" value="5"/>
+			<property name="EconomicValue" value="400"/>
+			<property name="HoldType" value="45"/>
+			<property name="Meshfile" value="#Other/Items?Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
+			<property name="DescriptionKey" value="apparelHazmatGroupDesc"/>
+			<property name="Group" value="Clothing"/>
+		</item>
+
+		<item name="apparelHazmatBoots">
+			<property name="Extends" value="apparelHazmatMaster" param1="CustomIcon"/>
+			<property name="Tags" value="lowerbody,feet,clothing,canHaveCosmetic.HazmatBoots"/>
+			<property name="EquipSlot" value="Feet"/>
+			<property class="UMA">
+				<property name="Mesh" value="armor_hazmat_feet"/>
+				<property name="Overlay0" value="armor_hazmat_boots"/>
+				<property name="Layer" value="0"/>
+				<property name="UISlot" value="Footwear"/>
+			</property>
+			<effect_group tiered="false">
+				<passive_effect name="ModSlots" operation="base_set" value="1"/>
+				<passive_effect name="HypothermalResist" operation="base_add" value="2.8,5.2"/>
+				<passive_effect name="HyperthermalResist" operation="base_add" value="1"/>
+				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" target="self" buff="BootsProtection"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" target="self" buff="BootsProtection,buffContaminatedProtection"/>
+			</effect_group>
+		</item>
+			
+		<item name="apparelHazmatPants">
+			<property name="Extends" value="apparelHazmatMaster" param1="CustomIcon"/>
+			<property name="Tags" value="lowerbody,legs,clothing,pocketMod,canHaveCosmetic,HazmatPants"/>
+			<property name="EquipSlot" value="Legs"/>
+			<property class="UMA">
+				<property name="Mesh" value="armor_hazmat_legs"/>
+				<property name="Mask0" value="legs" param1="middle"/>
+				<property name="Overlay0" value="armor_hazmat_pants"/>
+				<property name="Layer" value="1"/>
+				<property name="UISlot" value="Pants"/>
+			</property>
+			<effect_group tiered="false">
+				<passive_effect name="ModSlots" operation="base_set" value="1"/>
+				<passive_effect name="HypothermalResist" operation="base_add" value="6.5,9.5"/>
+				<passive_effect name="HyperthermalResist" operation="base_add" value="1"/>
+				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" target="self" buff="PantsProtection"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" target="self" buff="PantsProtection,buffContaminatedProtection"/>
+			</effect_group>
+		</item>
+		
+		<item name="apparelHazmatJacket">
+			<property name="Extends" value="apparelHazmatMaster" param1="CustomIcon"/>
+			<property name="Tags" value="upperbody,chest,clothing,pocketMod,canHaveCosmetic,HazmatJacket"/>
+			<property name="EquipSlot" value="Chest"/>
+			<property class="UMA">
+				<property name="Mesh" value="armor_hazmat_chest"/>
+				<property name="Overlay0" value="armor_hazmat_chest"/>
+				<property name="Layer" value="3"/>
+				<property name="Mask0" value="chest" param1="middle"/>
+				<property name="Mask2" value="chest" param1="inner"/>
+				<property name="UISlot" value="Jacket"/>
+			</property>
+			<effect_group tiered="false">
+				<passive_effect name="ModSlots" operation="base_set" value="1"/>
+				<passive_effect name="HypothermalResist" operation="base_add" value="6.5,9.5"/>
+				<passive_effect name="HyperthermalResist" operation="base_add" value="1"/>
+				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" target="self" buff="JacketProtection"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" target="self" buff="JacketProtection,buffContaminatedProtection"/>
+			</effect_group>
+		</item>
+		
+		<item name="apparelHazmatGloves">
+			<property name="Extends" value="apparelHazmatMaster" param1="CustomIcon"/>
+			<property name="Tags" value="upperbody,hands,clothing,canHaveCosmetic,HazmatGloves"/>
+			<property name="EquipSlot" value="Hands"/>
+			<property class="UMA">
+				<property name="Mesh" value="armor_hazmat_hands"/>
+				<property name="Overlay0" value="armor_hazmat_gloves"/>
+				<property name="Layer" value="0"/>
+				<property name="UISlot" value="Gloves"/>
+			</property>
+			<effect_group tiered="false">
+				<passive_effect name="ModSlots" operation="base_set" value="0"/>
+				<passive_effect name="HypothermalResist" operation="base_add" value="2.8,5.2"/>
+				<passive_effect name="HyperthermalResist" operation="base_add" value="1"/>
+				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" target="self" buff="GlovesProtection"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" target="self" buff="GlovesProtection,buffContaminatedProtection"/>
+			</effect_group>
+		</item>
+		
+		<item name="apparelHazmatMask">
+			<property name="Extends" value="apparelHazmatMaster" param1="CustomIcon"/>
+			<property name="Tags" value="head,clothing,canHaveCosmetic,HazmatMask"/>
+			<property name="EquipSlot" value="Head"/>
+			<property class="UMA">
+				<property name="Mesh" value="armor_hazmat_head"/>
+				<property name="Overlay0" value="armor_hazmat_hood"/>
+				<property name="Layer" value="middle"/>
+				<property name="UISlot" value="Headgear"/>
+				<property name="Mask1" value="Head" param1="inner"/>
+				<property name="Mask3" value="Face" param1="inner"/>
+				<property name="Mask4" value="Face" param1="middle"/>
+				<property name="Mask5" value="Face" param1="outer"/>
+				<property name="ShowAltHair" value="true"/>
+			</property>
+			<effect_group tiered="false">
+				<passive_effect name="ModSlots" operation="base_set" value="0"/>
+				<passive_effect name="HypothermalResist" operation="base_add" value="6.5,9.5"/>
+				<passive_effect name="HyperthermalResist" operation="base_add" value="1"/>
+				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" target="self" buff="MaskProtection"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" target="self" buff="MaskProtection,buffContaminatedProtection"/>
+			</effect_group>
+		</item>
+		
+	</append>		
+	
+	<append xpath="/items">
+	
+		<item name="Pilule Iodine">
+			<property name="HoldType" value="16"/>
+			<property name="DisplayType" value="ABC"/>
+			<property name="Meshfile" value="#Other/Items?Health/painkillersPrefab.prefab"/>
+			<property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Morganic"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="CustomIcon" value="drugAntibiotics"/>
+			<property name="CustomIconTint" value="255,60,60"/>
+			<property name="Stacknumber" value="10"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="DescriptionKey" value="Réduit les effets de la pluie radioactive pendant 30 minutes."/>
+			<property class="Action0">
+				<property name="Class" value="Eat"/>
+				<property name="Delay" value="1.0"/>
+				<property name="Use_time" value="..."/>
+				<property name="Sound_start" value="player_painkillers"/>
+				<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+			</property>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffIodine"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="GiveExp" exp="10"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ShowToolbeltMessage" message_key="JodTabletteTooltip"/>
+			</effect_group>
+		</item>
+		
+	</append>
+	
+</configs>

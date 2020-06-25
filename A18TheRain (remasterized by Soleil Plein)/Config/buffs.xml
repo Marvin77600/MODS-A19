@@ -1,0 +1,615 @@
+<configs>
+
+	<append xpath="//buff[@name='buffStatusCheck01']/effect_group[1]">
+
+		<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffPluie">
+			<requirement name="NotHasBuff" buff="buffAmoNrbcCheck"/>
+		</triggered_effect>
+		
+		<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffCheckRadiationLevel">
+			<requirement name="NotHasBuff" buff="buffAmoNrbcCheck"/>
+		</triggered_effect>
+		
+		<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffAmoNrbcCheck"/>
+
+	</append>
+	
+	<append xpath="//buff[@name='god']/effect_group">
+
+		<passive_effect name="BuffResistance" operation="base_add" value="1" tags="buffPluieCVarDisplay"/>
+		
+		<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$Pluie" operation="set" value="0"/>
+
+	</append>
+
+	<append xpath="/buffs">
+
+		<buff name="buffPluie" hidden="true" remove_on_death="false">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<update_rate value="10"/>
+			
+			<effect_group name="Start">
+				<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+			
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffPluieSelectBiome">
+					<requirement name="CVarCompare" cvar="_wetness" operation="GT" value="0"/>
+					<requirement name="!InBiome" biome="1"/>
+					<requirement name="NotHasBuff" buff="god"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffPluieCVarDisplay">
+					<requirement name="CVarCompare" cvar="_wetness" operation="GT" value="0"/>
+					<requirement name="!InBiome" biome="1"/>
+					<requirement name="NotHasBuff" buff="god"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<effect_group name="Shutdown Biomes Buffs">
+				<requirement name="CVarCompare" cvar="_wetness" operation="LT" value=".01"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieSelectBiome"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeDesert"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeBurntForest"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeWasteland"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeForest"/>
+			</effect_group>
+			
+			<effect_group name="Suit checking : Have">
+				<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+				
+				<requirement name="HasBuff" buff="BootsProtection"/>
+				<requirement name="HasBuff" buff="PantsProtection"/>
+				<requirement name="HasBuff" buff="JacketProtection"/>
+				<requirement name="HasBuff" buff="GlovesProtection"/>
+				<requirement name="HasBuff" buff="MaskProtection"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffContaminatedProtection"/>
+			</effect_group>
+			
+			<effect_group name="Check biome neige">
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieCVarDisplay">
+					<requirement name="InBiome" biome="1"/>
+				</triggered_effect>
+			</effect_group>
+			
+		</buff>
+
+		<buff name="buffCheckRadiationLevel" hidden="true" remove_on_death="false">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<update_rate value="1"/>
+			
+			<effect_group name="Radiation blue">
+				<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+			
+				<requirement name="CVarCompare" cvar="$Pluie" operation="GT" value="0"/>
+				<requirement name="CVarCompare" cvar="$Pluie" operation="LTE" value="20"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffRadiationDisplayBlue"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayGreen"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayYellow"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayOrange"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayRed"/>
+			</effect_group>
+			
+			<effect_group name="Radiation green">
+				<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+			
+				<requirement name="CVarCompare" cvar="$Pluie" operation="GTE" value="21"/>
+				<requirement name="CVarCompare" cvar="$Pluie" operation="LTE" value="40"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffRadiationDisplayGreen"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayBlue"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayYellow"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayOrange"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayRed"/>
+			</effect_group>
+			
+			<effect_group name="Radiation yellow">
+				<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+				
+				<requirement name="CVarCompare" cvar="$Pluie" operation="GTE" value="41"/>
+				<requirement name="CVarCompare" cvar="$Pluie" operation="LTE" value="60"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffRadiationDisplayYellow"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayBlue"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayGreen"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayOrange"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayRed"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayBlue"/>
+			</effect_group>
+			
+			<effect_group name="Radiation orange">
+				<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+			
+				<requirement name="CVarCompare" cvar="$Pluie" operation="GTE" value="61"/>
+				<requirement name="CVarCompare" cvar="$Pluie" operation="LTE" value="80"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffRadiationDisplayOrange"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayBlue"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayGreen"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayYellow"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayRed"/>
+			</effect_group>
+			
+			<effect_group name="Radiation red">
+				<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+			
+				<requirement name="CVarCompare" cvar="$Pluie" operation="GTE" value="81"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffRadiationDisplayRed"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayBlue"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayGreen"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayYellow"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayOrange"/>
+			</effect_group>
+			
+			<effect_group name="No rain">
+				<requirement name="CVarCompare" cvar="$Pluie" operation="LT" value="1"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayBlue"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayGreen"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayYellow"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayOrange"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayRed"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffRadiationDisplayBlue" name_key="Radioactivité : Niveau bleu" description_key="buffPluieEffetDesc" icon="ui_game_symbol_radiation" icon_color="0,0,255" remove_on_death="false">
+			<display_value value="$Pluie"/>
+			<display_value_key value="{0:0}%"/>
+		</buff>
+		
+		<buff name="buffRadiationDisplayGreen" name_key="Radioactivité : Niveau vert" description_key="buffPluieEffetDesc" icon="ui_game_symbol_radiation" icon_color="0,255,0" remove_on_death="false">
+			<display_value value="$Pluie"/>
+			<display_value_key value="{0:0}%"/>
+		</buff>
+		
+		<buff name="buffRadiationDisplayYellow" name_key="Radioactivité : Niveau jaune" description_key="buffPluieEffetDesc" icon="ui_game_symbol_radiation" icon_color="255,255,0" icon_blink="true" remove_on_death="false">
+			<display_value value="$Pluie"/>
+			<display_value_key value="{0:0}%"/>
+		</buff>
+		
+		<buff name="buffRadiationDisplayOrange" name_key="Radioactivité : Niveau orange" description_key="buffPluieEffetDesc" icon="ui_game_symbol_radiation" icon_color="255,128,0" icon_blink="true" remove_on_death="false">
+			<display_value value="$Pluie"/>
+			<display_value_key value="{0:0}%"/>
+		</buff>
+		
+		<buff name="buffRadiationDisplayRed" name_key="Radioactivité : Niveau rouge" description_key="buffPluieEffetDesc" icon="ui_game_symbol_radiation" icon_color="255,0,0" icon_blink="true" remove_on_death="false">
+			<display_value value="$Pluie"/>
+			<display_value_key value="{0:0}%"/>
+		</buff>
+		
+		<buff name="buffPluieCVarDisplay" remove_on_death="false" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<update_rate value="1"/>
+			
+			<effect_group name="CVar pluie up to 80% if buffContaminatedProtection">
+				<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+			
+				<requirement name="NotHasBuff" buff="god"/>
+				
+				<requirement name="CVarCompare" cvar="$Pluie" operation="LT" value="80"/>
+				<requirement name="CVarCompare" cvar="$Pluie" operation="GTE" value="0"/>
+				
+				<requirement name="CVarCompare" cvar="_wetness" operation="GT" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Pluie" operation="add" value="@$MetabolismDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$Pluie" operation="add" value="@$MetabolismDuration"/>
+			</effect_group>
+			
+			<effect_group name="CVar pluie up to 100% if not buffContaminatedProtection">
+				<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+			
+				<requirement name="NotHasBuff" buff="buffContaminatedProtection"/>
+				<requirement name="NotHasBuff" buff="buffIodine"/>
+				
+				<requirement name="NotHasBuff" buff="god"/>
+				
+				<requirement name="CVarCompare" cvar="$Pluie" operation="LTE" value="99.99"/>
+				<requirement name="CVarCompare" cvar="$Pluie" operation="GTE" value="80"/>
+				
+				<requirement name="CVarCompare" cvar="_wetness" operation="GT" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Pluie" operation="add" value="@$MetabolismDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$Pluie" operation="add" value="@$MetabolismDuration"/>
+			</effect_group>
+			
+			<effect_group name="CVar pluie down">
+				<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+			
+				<requirement name="NotHasBuff" buff="god"/>
+				
+				<requirement name="CVarCompare" cvar="$Pluie" operation="LTE" value="100"/>
+				<requirement name="CVarCompare" cvar="$Pluie" operation="GT" value="0"/>
+				
+				<requirement name="CVarCompare" cvar="_wetness" operation="LT" value="0.001"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Pluie" operation="subtract" value="@$MetabolismDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$Pluie" operation="subtract" value="@$MetabolismDuration"/>
+			</effect_group>
+			
+			<effect_group name="CVar pluie shutdown">
+				<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+			
+				<requirement name="NotHasBuff" buff="god"/>
+				
+				<requirement name="CVarCompare" cvar="_wetness" operation="LT" value="0.001"/>
+				<requirement name="CVarCompare" cvar="$Pluie" operation="LT" value="1"/>
+				
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Pluie" operation="subtract" value="@$MetabolismDuration"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$Pluie" operation="subtract" value="@$MetabolismDuration"/>
+			</effect_group>
+			
+			<effect_group name="Shutdown at 0">
+				<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+			
+				<requirement name="CVarCompare" cvar="$Pluie" operation="LTE" value="0"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieCVarDisplay"/>
+			</effect_group>
+			
+			<effect_group name="Death">
+				<triggered_effect trigger="onSelfRespawn" action="ModifyCVar" cvar="$Pluie" operation="set" value="0"/>
+			</effect_group>
+			
+			<effect_group name="Buff Remove">
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$Pluie" operation="set" value="0">
+					<requirement name="NotHasBuff" buff="buffContaminatedProtection"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffPluieSelectBiome" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="5"/>
+			<update_rate value="4"/>
+			
+			<effect_group name="Forest">
+			
+				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="Test réussi : Forêt">
+					<requirement name="InBiome" biome="3"/>
+				</triggered_effect> -->
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffPluieBiomeForest">
+					<requirement name="InBiome" biome="3"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<effect_group name="BurntForest">
+				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="Test réussi : Forêt brûlée">
+					<requirement name="InBiome" biome="9"/>
+				</triggered_effect> -->
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffPluieBiomeBurntForest">
+					<requirement name="InBiome" biome="9"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<effect_group name="Wasteland">
+				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="Test réussi : Dévasté">
+					<requirement name="InBiome" biome="8"/>
+				</triggered_effect> -->
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffPluieBiomeWasteland">
+					<requirement name="InBiome" biome="8"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<effect_group name="Desert">
+				<!-- <triggered_effect trigger="onSelfBuffUpdate" action="ShowToolbeltMessage" message="Test réussi : Désert">
+					<requirement name="InBiome" biome="5"/>
+				</triggered_effect> -->
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffPluieBiomeDesert">
+					<requirement name="InBiome" biome="5"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<effect_group name="Finish">
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffPluieWait"/>
+				
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" buff="buffPluieBiomeWasteland"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" buff="buffPluieBiomeBurntForest"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" buff="buffPluieBiomeDesert"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveBuff" buff="buffPluieBiomeForest"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffPluieWait" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			
+			<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+			
+			<effect_group name="Start">
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffPluieSelectBiome"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffPluieBiomeForest" hidden="true">
+			<stack_type value="ignore"/>
+			<update_rate value=".001"/>
+			
+			<effect_group name="Start">
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="ShowToolbeltMessage" message="Test réussi"/> -->
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeDesert"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeBurntForest"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeWasteland"/>
+				
+				<passive_effect name="BuffResistance" operation="base_add" value="2" tags="buffPluieBiomeDesert,buffPluieBiomeWasteland,buffPluieBiomeBurntForest"/>
+			</effect_group>
+			
+			<effect_group name="Effet">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Blur" intensity=".5" fade="1">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="GT" value="40"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Blur" intensity="0" fade="1"/>
+				
+				<passive_effect name="HealthChangeOT" operation="base_add" value="-1">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="GT" value="80"/>
+				</passive_effect>
+				
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="VibrantDeSat" intensity="1" fade="1">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="Equals" value="100"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="VibrantDeSat" intensity="0" fade="1"/>
+			</effect_group>
+			
+			<!--<effect_group name="Remove or Finish">
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Distortion" intensity="0" fade="1"/>
+				
+				<triggered_effect trigger="onSelfBuffFinish" action="ModifyScreenEffect" effect_name="Distortion" intensity="0" fade="1"/>
+			</effect_group>-->
+		</buff>
+		
+		<buff name="buffPluieBiomeBurntForest" hidden="true">
+			<stack_type value="ignore"/>
+			<update_rate value=".001"/>
+			
+			<effect_group name="Start">
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="ShowToolbeltMessage" message="Test réussi"/> -->
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeDesert"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeWasteland"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeForest"/>
+				
+				<passive_effect name="BuffResistance" operation="base_add" value="2" tags="buffPluieBiomeDesert,buffPluieBiomeWasteland,buffPluieBiomeForest"/>
+			</effect_group>
+			
+			<effect_group name="Effet">
+			
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Blur" intensity=".5" fade="1">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="GT" value="40"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Blur" intensity="0" fade="1"/>
+				
+				<passive_effect name="HealthChangeOT" operation="base_add" value="-1">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="GT" value="80"/>
+				</passive_effect>
+				
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="VibrantDeSat" intensity="1" fade="1">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="Equals" value="100"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="VibrantDeSat" intensity="0" fade="1"/>
+				
+				<!-- RETIRE L'EFFET DE LA FORET -->
+				
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Distortion" intensity="0" fade="1"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffPluieBiomeWasteland" hidden="true">
+			<stack_type value="ignore"/>
+			<update_rate value=".001"/>
+			
+			<effect_group name="Start">
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="ShowToolbeltMessage" message="Test réussi"/> -->
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeDesert"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeBurntForest"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeForest"/>
+				
+				<passive_effect name="BuffResistance" operation="base_add" value="2" tags="buffPluieBiomeDesert,buffPluieBiomeBurntForest,buffPluieBiomeForest"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffPluieBiomeDesert" hidden="true">
+			<stack_type value="ignore"/>
+			<update_rate value=".001"/>
+			
+			<effect_group name="Start">
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="ShowToolbeltMessage" message="Test réussi"/> -->
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeWasteland"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeBurntForest"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffPluieBiomeForest"/>
+				
+				<passive_effect name="BuffResistance" operation="base_add" value="2" tags="buffPluieBiomeWasteland,buffPluieBiomeBurntForest,buffPluieBiomeForest"/>
+			</effect_group>
+			
+			<effect_group name="Effet">
+				
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Blur" intensity=".5" fade="1">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="GT" value="40"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Blur" intensity="0" fade="1"/>
+				
+				<passive_effect name="HealthChangeOT" operation="base_add" value="-1">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="GT" value="80"/>
+					<requirement name="NotHasBuff" buff="buffContaminatedProtection"/>
+				</passive_effect>
+				
+				<passive_effect name="StaminaChangeOT" operation="base_add" value="-.1">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="GT" value="80"/>
+					<requirement name="NotHasBuff" buff="buffContaminatedProtection"/>
+				</passive_effect>
+				
+				<passive_effect name="WaterChangeOT" operation="base_add" value="-.1">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="GT" value="80"/>
+					<requirement name="NotHasBuff" buff="buffContaminatedProtection"/>
+				</passive_effect>
+				
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="VibrantDeSat" intensity="1" fade="1">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="Equals" value="100"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="VibrantDeSat" intensity="0" fade="1"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="BootsProtection" hidden="true">
+		</buff>
+		
+		<buff name="PantsProtection" hidden="true">
+		</buff>
+		
+		<buff name="JacketProtection" hidden="true">
+		</buff>
+		
+		<buff name="GlovesProtection" hidden="true">
+		</buff>
+		
+		<buff name="MaskProtection" hidden="true">
+		</buff>
+		
+		<buff name="buffAMOHelmetNRBC" hidden="true">
+		</buff>
+		
+		<buff name="buffAMOVestNRBC" hidden="true">
+		</buff>
+		
+		<buff name="buffAMOGlovesNRBC" hidden="true">
+		</buff>
+		
+		<buff name="buffAMOPantsNRBC" hidden="true">
+		</buff>
+		
+		<buff name="buffAMOBootsNRBC" hidden="true">
+		</buff>
+		
+		<buff name="buffAmoNrbcCheck" hidden="true">
+			<duration value="0"/>
+			<stack_type value="ignore"/>
+			<update_rate value=".1"/>
+			
+			<effect_group name="Start">
+				<requirement name="HasBuff" buff="buffAMOHelmetNRBC"/>
+				<requirement name="HasBuff" buff="buffAMOVestNRBC"/>
+				<requirement name="HasBuff" buff="buffAMOGlovesNRBC"/>
+				<requirement name="HasBuff" buff="buffAMOPantsNRBC"/>
+				<requirement name="HasBuff" buff="buffAMOBootsNRBC"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffAmoNrbcComplete"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffCheckRadiationLevel"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayBlue"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayGreen"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayYellow"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayOrange"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRadiationDisplayRed"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$Pluie" operation="set" value="0"/>
+				
+				<passive_effect name="BuffResistance" operation="base_add" value="2" tags="buffPluie,buffCheckRadiationLevel"/>
+			</effect_group>
+			
+			<effect_group name="Remove or Finish">
+				<triggered_effect trigger="onSelfBuffRemove" action="AddBuff" buff="buffPluie"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="AddBuff" buff="buffCheckRadiationLevel"/>
+				
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffPluie"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffCheckRadiationLevel"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffAmoNrbcComplete" name_key="Tenue complète AMO NRBC" description_key="Vous immunise complètement des effets de la pluie radioactive." icon="ui_game_symbol_shirt" icon_color="255,255,255">
+			<duration value="0"/>
+			<stack_type value="ignore"/>
+			<update_rate value=".1"/>
+			
+			<effect_group name="Remove or Finish">
+				<triggered_effect trigger="onSelfBuffRemove" action="AddBuff" buff="buffCheckRadiationLevel"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffCheckRadiationLevel"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffIodine" name_key="Médicament iodine" description_key="Réduit les effets de la pluie radioactive pendant 30 minutes." icon="ui_game_symbol_pills" icon_color="0,255,50">
+			<duration value="1800"/>
+			<stack_type value="ignore"/>
+			<update_rate value="4"/>
+			<display_value value="$Iodine"/>
+			<display_value_format value="time"/>
+			
+			<effect_group name="Start">
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffIodineTimer"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffContaminatedHalfHealth"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffIodineTimer" hidden="true">
+			<duration value="1800"/>
+			<stack_type value="ignore"/>
+			<update_rate value="1"/>
+			<effect_group name="Timer">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Iodine" operation="add" value="@$MetabolismDuration"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Iodine" operation="set" value="1800"/>
+				
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$Iodine" operation="subtract" value="1"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffContaminatedProtection" hidden="true">
+			<duration value="0"/>
+			<stack_type value="ignore"/>
+			<update_rate value="4"/>
+			
+			<effect_group name="Start">
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffContaminatedHalfHealth"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffContaminatedHalfHealth" hidden="true">
+			<duration value="1"/>
+			<stack_type value="ignore"/>
+			<damage_type value="Radiation"/>
+			<damage_source value="Internal"/>
+			
+			<effect_group name="Start">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="subtract" value=".3">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="GTE" value="80"/>
+					<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Stamina" value_type="modifiedmax" operation="add" value="-.1">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="GTE" value="80"/>
+					<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+				</triggered_effect>
+				
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Water" value_type="modifiedmax" operation="add" value="-.1">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="GTE" value="80"/>
+					<requirement name="NotHasBuff" buff="buffAmoNrbcComplete"/>
+				</triggered_effect>
+			</effect_group>
+			
+			<effect_group name="Check $Pluie">
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$Pluie" operation="set" value="80">
+					<requirement name="CVarCompare" cvar="$Pluie" operation="GT" value="80"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+
+	</append>
+
+</configs>
