@@ -256,7 +256,7 @@
 			</effect_group>
 		</buff>
 		
-		<buff name="buffSommeilRed" name_key="Reposez-vous !" description_key="Votre vue est très altérée, reposez-vous !" icon="ui_game_symbol_map_bed" icon_color="255,0,0">
+		<buff name="buffSommeilRed" name_key="Reposez-vous !" description_key="Voilà c'est fait... vous êtes crevé.\n\nVous voyez très sombre donc il serait temps de se reposer non ?" icon="ui_game_symbol_map_bed" icon_color="255,0,0">
 			<stack_type value="ignore"/>
 			<duration value="0"/>
 			<display_value_key value="{0:0}%"/>
