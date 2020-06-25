@@ -1,0 +1,156 @@
+<ArmarezAK103>
+
+	<append xpath="/item_modifiers" >
+	
+		<item_modifier name="AMO Helmet NRBC" installable_tags="head" modifier_tags="rare" blocked_tags="noMods,clothing" type="attachment">
+			<property name="CustomIcon" value="apparelHazmatMask"/>
+			<property name="Stacknumber" value="1"/> <property name="Group" value="Mods"/>
+			<property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
+			<property name="EconomicValue" value="3000"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="DisplayType" value="clothing"/>
+			<item_property_overrides name="*">
+				<property name="UMA.Mesh" value="armor_hazmat_head"/>
+				<property name="UMA.Overlay0" value="armor_hazmat_hood"/>
+				<property name="UMA.Overlay0Tint" value="0,0,0"/>
+				<property name="UMA.ShowAltHair" value="true"/>
+			</item_property_overrides>
+
+			<effect_group tiered="false">
+				<passive_effect name="HypothermalResist" operation="base_add" value="9"/>
+				<passive_effect name="HyperthermalResist" operation="base_add" value="1"/>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="6" tags="head,radiation" match_all_tags="true"/>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="15" tags="head,toxic" match_all_tags="true"/>
+				
+				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="buffAMOHelmetNRBC"/>
+				
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffAMOHelmetNRBC"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffAmoNrbcComplete"/>
+				
+				<triggered_effect trigger="onSelfEquipStop" action="AddBuff" buff="buffCheckRadiationLevel"/>
+			</effect_group>
+		</item_modifier>
+	
+	        <item_modifier name="AMO Vest NRBC" installable_tags="AMONRBC" modifier_tags="dye,rare" type="attachment" cosmetic_install_chance="0">
+			<property name="CustomIcon" value="apparelHazmatJacket"/> <property name="CustomIconTint" value="47,47,47"/>
+			<property name="Stacknumber" value="1"/> <property name="Group" value="Mods"/>
+			<property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
+			<property name="EconomicValue" value="3000"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="DisplayType" value="clothing"/>
+			<property name="DescriptionKey" value="apparelHazmatGroupDesc"/>
+			<item_property_overrides name="*">
+				<property name="UMA.Mesh" value="armor_hazmat_chest"/>
+				<property name="UMA.Overlay0" value="armor_hazmat_chest"/>
+				<property name="UMA.Overlay1" value=""/>
+				<property name="UMA.Overlay2" value=""/>
+				<property name="UMA.Overlay3" value=""/>
+				<property name="UMA.CustomIconTint" value="47,47,47"/>
+				<property name="UMA.Overlay0Tint" value="0,0,0"/>
+				<property name="UMA.Layer" value="3"/>
+				<property name="UMA.Mask0" value="chest" param1="middle"/>
+				<property name="UMA.Mask2" value="chest" param1="inner"/>
+			</item_property_overrides>
+
+			<effect_group tiered="false">
+				<passive_effect name="HypothermalResist" operation="base_add" value="9"/>
+				<passive_effect name="HyperthermalResist" operation="base_add" value="1"/>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="5" tags="upperbody,chest,radiation,toxic" match_all_tags="true"/>
+				
+				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="buffAMOVestNRBC"/>
+				
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffAMOVestNRBC"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffAmoNrbcComplete"/>
+				
+				<triggered_effect trigger="onSelfEquipStop" action="AddBuff" buff="buffCheckRadiationLevel"/>
+			</effect_group>
+		</item_modifier>
+	
+		<item_modifier name="AMO Gloves NRBC" installable_tags="hands" modifier_tags="rare" blocked_tags="noMods,clothing" type="attachment">
+			<property name="CustomIcon" value="apparelHazmatGloves"/>
+			<property name="Stacknumber" value="1"/> <property name="Group" value="Mods"/>
+			<property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
+			<property name="EconomicValue" value="3000"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="DisplayType" value="clothing"/>
+			<item_property_overrides name="*">
+				<property name="UMA.Mesh" value="armor_hazmat_hands"/>
+				<property name="UMA.Overlay0" value="armor_hazmat_gloves"/>
+				<property name="UMA.Overlay0Tint" value="0,0,0"/>
+				<property name="UMA.Layer" value="0"/>
+			</item_property_overrides>
+
+			<effect_group tiered="false">
+				<passive_effect name="HypothermalResist" operation="base_add" value="5"/>
+				<passive_effect name="HyperthermalResist" operation="base_add" value="1"/>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="10" tags="upperbody,hands,radiation,toxic" match_all_tags="true"/>
+				
+				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="buffAMOGlovesNRBC"/>
+				
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffAMOGlovesNRBC"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffAmoNrbcComplete"/>
+				
+				<triggered_effect trigger="onSelfEquipStop" action="AddBuff" buff="buffCheckRadiationLevel"/>
+			</effect_group>
+		</item_modifier>
+	
+		<item_modifier name="AMO Pants NRBC" installable_tags="legs" modifier_tags="rare" blocked_tags="noMods,clothing" type="attachment">
+			<property name="CustomIcon" value="apparelHazmatPants"/>
+			<property name="Stacknumber" value="1"/> <property name="Group" value="Mods"/>
+			<property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
+			<property name="EconomicValue" value="3000"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="DisplayType" value="clothing"/>
+			<item_property_overrides name="*">
+				<property name="UMA.Mesh" value="armor_hazmat_legs"/>
+				<property name="UMA.Mask0" value="legs" param1="middle"/>
+				<property name="UMA.Overlay0" value="armor_hazmat_pants"/>
+				<property name="UMA.Overlay0Tint" value="0,0,0"/>
+				<property name="UMA.Layer" value="1"/>
+			</item_property_overrides>
+
+			<effect_group tiered="false">
+				<passive_effect name="HypothermalResist" operation="base_add" value="9"/>
+				<passive_effect name="HyperthermalResist" operation="base_add" value="1"/>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="5" tags="lowerbody,legs,radiation,toxic" match_all_tags="true"/>
+				
+				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="buffAMOPantsNRBC"/>
+				
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffAMOPantsNRBC"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffAmoNrbcComplete"/>
+				
+				<triggered_effect trigger="onSelfEquipStop" action="AddBuff" buff="buffCheckRadiationLevel"/>
+			</effect_group>
+		</item_modifier>
+
+		<item_modifier name="AMO Boots NRBC" installable_tags="feet" modifier_tags="rare" blocked_tags="noMods,clothing" type="attachment">
+			<property name="CustomIcon" value="apparelHazmatBoots"/>
+			<property name="Stacknumber" value="1"/> <property name="Group" value="Mods"/>
+			<property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
+			<property name="EconomicValue" value="3000"/>
+			<property name="SellableToTrader" value="false"/>
+			<property name="DisplayType" value="clothing"/>
+			<item_property_overrides name="*">
+				<property name="UMA.Mesh" value="armor_hazmat_feet"/>
+				<property name="UMA.Overlay0" value="armor_hazmat_boots"/>
+				<property name="UMA.Overlay0Tint" value="0,0,0"/>
+				<property name="UMA.Layer" value="0"/>
+			</item_property_overrides>
+
+			<effect_group tiered="false">
+				<passive_effect name="HypothermalResist" operation="base_add" value="5"/>
+				<passive_effect name="HyperthermalResist" operation="base_add" value="1"/>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="5" tags="lowerbody,feet,radiation,toxic" match_all_tags="true"/>
+				
+				<triggered_effect trigger="onSelfEquipStart" action="AddBuff" buff="buffAMOBootsNRBC"/>
+				
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffAMOBootsNRBC"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemoveBuff" buff="buffAmoNrbcComplete"/>
+				
+				<triggered_effect trigger="onSelfEquipStop" action="AddBuff" buff="buffCheckRadiationLevel"/>
+			</effect_group>
+		</item_modifier>
+		
+	</append>
+	
+</ArmarezAK103>

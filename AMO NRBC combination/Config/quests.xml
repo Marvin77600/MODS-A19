@@ -1,0 +1,28 @@
+<Armarez>
+<append xpath="/quests">
+
+<quest id="NRCB_Quest">
+	<property name="name" value="Combinaison NRCB" />
+	<property name="subtitle" value="Combinaison NRCB" />
+	<property name="description" value="Combinaison NRCB contre les menaces nucléaires, radiologiques, biologiques et chimiques" />
+	<property name="icon" value="ui_game_symbol_zombie" />
+	<property name="category_key" value="quest" />
+	<property name="offer" value="Combinaison NRCB contre les menaces nucléaires, radiologiques, biologiques et chimiques" />
+	<property name="shareable" value="false" />
+	<property name="difficulty" value="hard" />
+	<property name="completiontype" value="TurnIn" />
+	<property name="completion_key" value="C’est une combinaison NRCB conçu pour supporter les menaces nucléaires, radiologiques, biologiques et chimiques, fabriqué par le Conglomérat AMO pendant la guerre." />
+		
+	<objective type="InteractWithNPC">
+	<property name="phase" value="2" />
+	</objective>
+
+	<reward type="Item" id="AMO Helmet NRBC"/>
+	<reward type="Item" id="AMO Vest NRBC"/>
+	<reward type="Item" id="AMO Gloves NRBC"/>
+	<reward type="Item" id="AMO Pants NRBC"/>
+	<reward type="Item" id="AMO Boots NRBC"/>
+</quest>
+
+</append>	
+</Armarez>

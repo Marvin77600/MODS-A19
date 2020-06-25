@@ -1,0 +1,20 @@
+<configs>
+    <!--
+        Remove recipes for all blocks with <property name="Class" value="SleepingBag" />
+        Those blocks act as player spawn points
+    -->
+    <remove xpath="/recipes/recipe[@name='bedroll']" />
+    <remove xpath="/recipes/recipe[@name='bed01']" />
+    <remove xpath="/recipes/recipe[@name='bed02']" />
+    <!-- mattressFlat has no recipe...? -->
+	
+<append xpath="/recipes" >	
+		
+    <recipe name="bedroll" count="1" craft_area="workbench" craft_time="1000">
+	<ingredient name="resourceCloth" count="100"/>
+	<ingredient name="resourceSewingKit" count="2"/>
+	<ingredient name="resourceYuccaFibers" count="1000"/> 
+    </recipe>
+</append>
+
+</configs>

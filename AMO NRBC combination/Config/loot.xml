@@ -1,0 +1,30 @@
+<ArMaReZ>
+
+	<!-- safes, weapon caches rare good loot -->
+	<append xpath="/lootcontainers/lootcontainer[@id='11']"> 
+		<item name="NRCB_Quest" count="1" prob="0.005"/>
+	</append>
+
+	<!-- Supply Crate General, the normal airdrop -->
+	<append xpath="/lootcontainers/lootcontainer[@id='34']"> 
+		<item name="NRCB_Quest" count="1" prob="0.005"/>
+	</append>
+	
+	<!-- military munitions ammo box -->
+	<append xpath="/lootcontainers/lootcontainer[@id='40']"> 
+		<item name="NRCB_Quest" count="1" prob="0.005"/>
+	</append>	
+
+	<!-- gun safe -->
+	<append xpath="/lootcontainers/lootcontainer[@id='42']"> 
+		<item name="NRCB_Quest" count="1" prob="0.005"/>
+	</append>
+
+	<!-- shotgun Messiah -->
+	<append xpath="/lootcontainers/lootcontainer[@id='50']"> 
+		<item name="NRCB_Quest" count="1" prob="0.005"/>
+	</append>	
+	
+	
+	
+</ArMaReZ>

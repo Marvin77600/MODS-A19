@@ -1,0 +1,95 @@
+<Armarez>
+
+	<!-- Armarez -->
+
+	<append xpath="//item[@name='apparelCoatLeatherDuster']/property[@name='Tags']/@value">,AMONRBC</append>
+	<append xpath="//item[@name='apparelCoatJacketGeneric']/property[@name='Tags']/@value">,AMONRBC</append>
+	<append xpath="//item[@name='apparelSuitJacket']/property[@name='Tags']/@value">,AMONRBC</append>
+	<append xpath="//item[@name='apparelCoatPufferCoat']/property[@name='Tags']/@value">,AMONRBC</append>
+	<append xpath="//item[@name='apparelCoatLeatherPoncho']/property[@name='Tags']/@value">,AMONRBC</append>
+	<append xpath="//item[@name='apparelHazmatJacket']/property[@name='Tags']/@value">,AMONRBC</append>
+ 
+	<append xpath="/items">
+
+		<!-- Quest Stuff Anti Rain -->		
+		<item name="NRCB_Quest">
+			<property name="ItemTypeIcon" value="star"/>
+			<property name="Extends" value="questMaster"/>
+			<property name="CustomIconTint" value="b9b9b9"/>
+			<property name="Material" value="Morganic"/>
+			<property name="EconomicValue" value="0"/>
+			<property class="Action0">
+				<property name="QuestGiven" value="NRCB_Quest" />
+			</property>
+		</item>
+
+	</append>
+	
+	<!-- Armarez -->
+	
+	
+	<!-- Marvin -->
+	<!--
+	<append xpath="/items">
+	
+		<item name="Casque lumière rouge">
+			<property name="Tags" value="head,armor,armorHead,lightArmor,lightArmorPenalty,canHaveCosmetic,lightArmorDeg"/>
+			<property name="DisplayType" value="armorLight"/>
+			<property name="Waterproof" value=".15"/>
+			<property name="UnlockedBy" value="perkArtOfMiningLantern"/>
+			<property name="Material" value="Mplastics"/>
+			<property name="RepairTools" value="resourceRepairKit"/>
+			<property name="Weight" value="10"/>
+			<property name="EconomicValue" value="500"/>
+			<property name="Degradation" value="250" param1="true"/>
+			<property name="DegradationBreaksAfter" value="false"/>
+			<property name="Encumbrance" value=".01"/>
+			<property name="HoldType" value="45"/>
+			<property name="Meshfile" value="#Other/Items?Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
+			<property name="EquipSlot" value="Head"/>
+			<property name="ShowQuality" value="true"/>
+			<property name="Group" value="Clothing"/>
+			<property name="LightValue" value=".7"/>
+			<effect_group name="leather w scrap AR">
+				<passive_effect name="ModSlots" operation="base_set" value="1,1,2,2,3,4" tier="1,2,3,4,5,6"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="300" tags="EconomicValue"/>
+
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="7.49,10.7" tier="1,6"/>
+				<passive_effect name="ElementalDamageResist" operation="base_add" value="7.49,10.7" tier="1,6" tags="heat,electrical"/>
+				<passive_effect name="BuffResistance" operation="base_add" value="0.054" tags="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffInfectionCatch,buffInjuryStunned01CHTrigger"/>
+
+				<passive_effect name="DegradationMax" operation="base_set" value="110,225" tier="1,6"/>
+				<passive_effect name="DegradationPerUse" operation="base_set" value="1" tags="lightArmorDeg"/>
+				<passive_effect name="Mobility" operation="perc_add" value="-.04"/>
+				<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.0281" tags="walking"/>
+				<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.0562" tags="running"/>
+				<display_value name="dStaminaChangeOT" value="-.562"/>
+				<passive_effect name="NoiseMultiplier" operation="perc_add" value=".1"/><display_value name="dNoiseMultiplier" value=".1"/>
+				
+				<triggered_effect trigger="onSelfEquipStart" action="AddPart" part="HeadLightTPV" prefab="ScreenEffects/DeferredNV/NVGLight" parentTransform="Spotlight" localPos="0,0,0" localRot="90,0,0"/>
+				<triggered_effect trigger="onSelfEquipStart" action="AddPart" part="HeadLightFPV" prefab="ScreenEffects/DeferredNV/NVGLight" parentTransform="CameraNode" localPos="0,0,.1" localRot="-90,0,0"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemovePart" part="HeadLightTPV"/>
+				<triggered_effect trigger="onSelfEquipStop" action="RemovePart" part="HeadLightFPV"/>
+				<triggered_effect trigger="onSelfItemActivate" action="SetPartActive" part="HeadLightTPV" active="@!.IsFPV"/>
+				<triggered_effect trigger="onSelfItemActivate" action="SetPartActive" part="HeadLightFPV" active="@.IsFPV"/>
+				<triggered_effect trigger="onSelfItemDeactivate" action="SetPartActive" part="HeadLightTPV" active="false"/>
+				<triggered_effect trigger="onSelfItemDeactivate" action="SetPartActive" part="HeadLightFPV" active="false"/>
+				<triggered_effect trigger="onSelfChangedView" action="SetPartActive" part="HeadLightTPV" active="@!.IsFPV"/>
+				<triggered_effect trigger="onSelfChangedView" action="SetPartActive" part="HeadLightFPV" active="@.IsFPV"/>
+			</effect_group>
+			<property class="UMA">
+				<property name="Mesh" value="gear_mining_helmet"/>
+				<property name="Overlay0" value="gear_mining_helmet"/>
+				<property name="Layer" value="2"/>
+				<property name="UISlot" value="Headgear"/>
+				<property name="ShowAltHair" value="true"/>
+			</property>
+		</item>
+	
+	</append>
+	-->
+	
+	<!-- Marvin -->
+	
+</Armarez>
