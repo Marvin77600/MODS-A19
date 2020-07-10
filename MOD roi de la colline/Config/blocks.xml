@@ -1,0 +1,323 @@
+<configs>
+
+	<append xpath="/blocks">
+
+		<block name="Forge bleue">
+			<property name="Class" value="Forge"/>
+			<property name="UnlockedBy" value="perkAdvancedEngineering,forgeSchematic"/>
+			<property name="Material" value="Mstone_scrap"/>
+			<property name="MaxDamage" value="800"/>
+			<property name="StabilitySupport" value="true"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Path" value="solid"/>
+			<property name="Model" value="Entities/Decor/flag_polePrefab"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="ParticleName" value="forge"/>
+			<property name="ParticleOffset" value="0.5,0,0.5"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="HeatMapStrength" value="6"/>
+			<property name="HeatMapTime" value="5000"/>
+			<property name="HeatMapFrequency" value="1000"/>
+			<property name="BuffsWhenWalkedOn" value="buffBurningEnvironment"/>
+			<property name="ActiveRadiusEffects" value="buffTeamBlueForge(5)"/>
+
+			<property class="Workstation">
+				<property name="CraftingAreaRecipes" value="forge"/>
+				<property name="Modules" value="tools,output,fuel,material_input"/>
+				<property name="InputMaterials" value="iron,brass,lead,glass,stone,clay"/>
+			</property>
+			<property name="WorkstationIcon" value="ui_game_symbol_forge"/>
+			<property name="OpenSound" value="forge_open"/>
+			<property name="CloseSound" value="forge_close"/>
+			<property name="CraftSound" value="forge_smelt_click"/>
+			<property name="CraftCompleteSound" value="forge_item_complete"/>
+			<property name="WorkstationJournalTip" value="forgeTip"/>
+
+			<property class="RepairItems">
+				<property name="resourceRockSmall" value="50"/>
+				<property name="resourceClayLump" value="60"/>
+				<property name="resourceLeather" value="20"/>
+			</property>
+			<drop event="Harvest" name="resourceRockSmall" count="40" tag="allHarvest"/>
+			<drop event="Harvest" name="resourceClayLump" count="20" tag="allHarvest"/>
+			<drop event="Harvest" name="resourceLeather" count="5" tag="allHarvest"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="terrDestroyedStone" count="1" prob="0.75" stick_chance="1"/>
+			<property name="TakeDelay" value="15"/>
+			<property name="Group" value="Building,advBuilding"/>
+			<property name="DescriptionKey" value="forgeDesc"/>
+			<property name="EconomicValue" value="1000"/>
+			<property name="FilterTags" value="fdecor,fother,ffurniture"/>
+			<property name="SortOrder1" value="70i0"/>
+		</block>
+		
+		<block name="Forge rouge">
+			<property name="Class" value="Forge"/>
+			<property name="UnlockedBy" value="perkAdvancedEngineering,forgeSchematic"/>
+			<property name="Material" value="Mstone_scrap"/>
+			<property name="MaxDamage" value="800"/>
+			<property name="StabilitySupport" value="true"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Path" value="solid"/>
+			<property name="Model" value="Entities/Decor/flag_polePrefab"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="ParticleName" value="forge"/>
+			<property name="ParticleOffset" value="0.5,0,0.5"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="HeatMapStrength" value="6"/>
+			<property name="HeatMapTime" value="5000"/>
+			<property name="HeatMapFrequency" value="1000"/>
+			<property name="BuffsWhenWalkedOn" value="buffBurningEnvironment"/>
+			<property name="ActiveRadiusEffects" value="buffTeamRedForge(5)"/>
+
+			<property class="Workstation">
+				<property name="CraftingAreaRecipes" value="forge"/>
+				<property name="Modules" value="tools,output,fuel,material_input"/>
+				<property name="InputMaterials" value="iron,brass,lead,glass,stone,clay"/>
+			</property>
+			<property name="WorkstationIcon" value="ui_game_symbol_forge"/>
+			<property name="OpenSound" value="forge_open"/>
+			<property name="CloseSound" value="forge_close"/>
+			<property name="CraftSound" value="forge_smelt_click"/>
+			<property name="CraftCompleteSound" value="forge_item_complete"/>
+			<property name="WorkstationJournalTip" value="forgeTip"/>
+
+			<property class="RepairItems">
+				<property name="resourceRockSmall" value="50"/>
+				<property name="resourceClayLump" value="60"/>
+				<property name="resourceLeather" value="20"/>
+			</property>
+			<drop event="Harvest" name="resourceRockSmall" count="40" tag="allHarvest"/>
+			<drop event="Harvest" name="resourceClayLump" count="20" tag="allHarvest"/>
+			<drop event="Harvest" name="resourceLeather" count="5" tag="allHarvest"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="terrDestroyedStone" count="1" prob="0.75" stick_chance="1"/>
+			<property name="TakeDelay" value="15"/>
+			<property name="Group" value="Building,advBuilding"/>
+			<property name="DescriptionKey" value="forgeDesc"/>
+			<property name="EconomicValue" value="1000"/>
+			<property name="FilterTags" value="fdecor,fother,ffurniture"/>
+			<property name="SortOrder1" value="70i0"/>
+		</block>
+		
+		<block name="Forge jaune">
+			<property name="Class" value="Forge"/>
+			<property name="UnlockedBy" value="perkAdvancedEngineering,forgeSchematic"/>
+			<property name="Material" value="Mstone_scrap"/>
+			<property name="MaxDamage" value="800"/>
+			<property name="StabilitySupport" value="true"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Path" value="solid"/>
+			<property name="Model" value="Entities/Decor/flag_polePrefab"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="ParticleName" value="forge"/>
+			<property name="ParticleOffset" value="0.5,0,0.5"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="HeatMapStrength" value="6"/>
+			<property name="HeatMapTime" value="5000"/>
+			<property name="HeatMapFrequency" value="1000"/>
+			<property name="BuffsWhenWalkedOn" value="buffBurningEnvironment"/>
+			<property name="ActiveRadiusEffects" value="buffTeamYellowForge(5)"/>
+
+			<property class="Workstation">
+				<property name="CraftingAreaRecipes" value="forge"/>
+				<property name="Modules" value="tools,output,fuel,material_input"/>
+				<property name="InputMaterials" value="iron,brass,lead,glass,stone,clay"/>
+			</property>
+			<property name="WorkstationIcon" value="ui_game_symbol_forge"/>
+			<property name="OpenSound" value="forge_open"/>
+			<property name="CloseSound" value="forge_close"/>
+			<property name="CraftSound" value="forge_smelt_click"/>
+			<property name="CraftCompleteSound" value="forge_item_complete"/>
+			<property name="WorkstationJournalTip" value="forgeTip"/>
+
+			<property class="RepairItems">
+				<property name="resourceRockSmall" value="50"/>
+				<property name="resourceClayLump" value="60"/>
+				<property name="resourceLeather" value="20"/>
+			</property>
+			<drop event="Harvest" name="resourceRockSmall" count="40" tag="allHarvest"/>
+			<drop event="Harvest" name="resourceClayLump" count="20" tag="allHarvest"/>
+			<drop event="Harvest" name="resourceLeather" count="5" tag="allHarvest"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="terrDestroyedStone" count="1" prob="0.75" stick_chance="1"/>
+			<property name="TakeDelay" value="15"/>
+			<property name="Group" value="Building,advBuilding"/>
+			<property name="DescriptionKey" value="forgeDesc"/>
+			<property name="EconomicValue" value="1000"/>
+			<property name="FilterTags" value="fdecor,fother,ffurniture"/>
+			<property name="SortOrder1" value="70i0"/>
+		</block>
+		
+		<block name="Forge verte">
+			<property name="Class" value="Forge"/>
+			<property name="UnlockedBy" value="perkAdvancedEngineering,forgeSchematic"/>
+			<property name="Material" value="Mstone_scrap"/>
+			<property name="MaxDamage" value="800"/>
+			<property name="StabilitySupport" value="true"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Path" value="solid"/>
+			<property name="Model" value="Entities/Decor/flag_polePrefab"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="OnlySimpleRotations" value="true"/>
+			<property name="IsTerrainDecoration" value="true"/>
+			<property name="ParticleName" value="forge"/>
+			<property name="ParticleOffset" value="0.5,0,0.5"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Stacknumber" value="1"/>
+			<property name="HeatMapStrength" value="6"/>
+			<property name="HeatMapTime" value="5000"/>
+			<property name="HeatMapFrequency" value="1000"/>
+			<property name="BuffsWhenWalkedOn" value="buffBurningEnvironment"/>
+			<property name="ActiveRadiusEffects" value="buffTeamGreenForge(5)"/>
+
+			<property class="Workstation">
+				<property name="CraftingAreaRecipes" value="forge"/>
+				<property name="Modules" value="tools,output,fuel,material_input"/>
+				<property name="InputMaterials" value="iron,brass,lead,glass,stone,clay"/>
+			</property>
+			<property name="WorkstationIcon" value="ui_game_symbol_forge"/>
+			<property name="OpenSound" value="forge_open"/>
+			<property name="CloseSound" value="forge_close"/>
+			<property name="CraftSound" value="forge_smelt_click"/>
+			<property name="CraftCompleteSound" value="forge_item_complete"/>
+			<property name="WorkstationJournalTip" value="forgeTip"/>
+
+			<property class="RepairItems">
+				<property name="resourceRockSmall" value="50"/>
+				<property name="resourceClayLump" value="60"/>
+				<property name="resourceLeather" value="20"/>
+			</property>
+			<drop event="Harvest" name="resourceRockSmall" count="40" tag="allHarvest"/>
+			<drop event="Harvest" name="resourceClayLump" count="20" tag="allHarvest"/>
+			<drop event="Harvest" name="resourceLeather" count="5" tag="allHarvest"/>
+			<drop event="Destroy" count="0"/>
+			<drop event="Fall" name="terrDestroyedStone" count="1" prob="0.75" stick_chance="1"/>
+			<property name="TakeDelay" value="15"/>
+			<property name="Group" value="Building,advBuilding"/>
+			<property name="DescriptionKey" value="forgeDesc"/>
+			<property name="EconomicValue" value="1000"/>
+			<property name="FilterTags" value="fdecor,fother,ffurniture"/>
+			<property name="SortOrder1" value="70i0"/>
+		</block>
+		
+		<block name="Drapeau MSN Jaune">
+			<property name="CustomIcon" value="flagPoleWhiteRiver"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="DisplayType" value="blockHardenedMulti"/>
+			<property name="Material" value="Mmetal_hard"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Path" value="solid"/>
+			<property name="Model" value="#@modfolder:Resources/Drapeaux.unity3d?DrapeauMSNJaune"/>
+			<property name="MultiBlockDim" value="1,20,1"/>
+			<property name="HandleFace" value="South"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="LootList" value="42"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<drop event="Destroy" count="0"/>
+			<property name="FilterTags" value="fdecor,fother"/>
+		</block>
+		
+		<block name="Drapeau MSN Vert">
+			<property name="CustomIcon" value="flagPoleWhiteRiver"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="DisplayType" value="blockHardenedMulti"/>
+			<property name="Material" value="Mmetal_hard"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Path" value="solid"/>
+			<property name="Model" value="#@modfolder:Resources/Drapeaux.unity3d?DrapeauMSNVert"/>
+			<property name="MultiBlockDim" value="1,20,1"/>
+			<property name="HandleFace" value="South"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="LootList" value="42"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<drop event="Destroy" count="0"/>
+			<property name="FilterTags" value="fdecor,fother"/>
+		</block>
+		
+		<block name="Drapeau MSN Bleu">
+			<property name="CustomIcon" value="flagPoleWhiteRiver"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="DisplayType" value="blockHardenedMulti"/>
+			<property name="Material" value="Mmetal_hard"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Path" value="solid"/>
+			<property name="Model" value="#@modfolder:Resources/Drapeaux.unity3d?DrapeauMSNBleu"/>
+			<property name="MultiBlockDim" value="1,20,1"/>
+			<property name="HandleFace" value="South"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="LootList" value="42"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<drop event="Destroy" count="0"/>
+			<property name="FilterTags" value="fdecor,fother"/>
+		</block>
+		
+		<block name="Drapeau MSN Rouge">
+			<property name="CustomIcon" value="flagPoleWhiteRiver"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="DisplayType" value="blockHardenedMulti"/>
+			<property name="Material" value="Mmetal_hard"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Path" value="solid"/>
+			<property name="Model" value="#@modfolder:Resources/Drapeaux.unity3d?DrapeauMSNRouge"/>
+			<property name="MultiBlockDim" value="1,20,1"/>
+			<property name="HandleFace" value="South"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="LootList" value="42"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<drop event="Destroy" count="0"/>
+			<property name="FilterTags" value="fdecor,fother"/>
+		</block>
+		
+		<block name="Drapeau MSN Bleu SG8">
+			<property name="CustomIcon" value="flagPoleWhiteRiver"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="DisplayType" value="blockHardenedMulti"/>
+			<property name="Material" value="Mmetal_hard"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Path" value="solid"/>
+			<property name="Model" value="#@modfolder:Resources/DrapeauMSN.unity3d?DrapeauMSNBleu"/>
+			<property name="MultiBlockDim" value="1,20,1"/>
+			<property name="HandleFace" value="South"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="LootList" value="42"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<drop event="Destroy" count="0"/>
+			<property name="FilterTags" value="fdecor,fother"/>
+		</block>
+		
+		<block name="Drapeau MSN Rouge SG8">
+			<property name="CustomIcon" value="flagPoleWhiteRiver"/>
+			<property name="CreativeMode" value="Dev"/>
+			<property name="DisplayType" value="blockHardenedMulti"/>
+			<property name="Material" value="Mmetal_hard"/>
+			<property name="Shape" value="ModelEntity"/>
+			<property name="Path" value="solid"/>
+			<property name="Model" value="#@modfolder:Resources/DrapeauMSN.unity3d?DrapeauMSNRouge"/>
+			<property name="MultiBlockDim" value="1,20,1"/>
+			<property name="HandleFace" value="South"/>
+			<property name="ImposterDontBlock" value="true"/>
+			<property name="Place" value="TowardsPlacerInverted"/>
+			<property name="LootList" value="42"/>
+			<drop event="Fall" name="scrapMetalPile" count="1" prob="0.75" stick_chance="1"/>
+			<drop event="Destroy" count="0"/>
+			<property name="FilterTags" value="fdecor,fother"/>
+		</block>
+
+	</append>
+
+</configs>

@@ -1,0 +1,41 @@
+<configs>
+
+	<append xpath="/items">
+	
+		<item name="Balle taser">
+			<property name="CustomIcon" value="ammo762mmBulletBall"/>
+			<property name="CustomIconTint" value="0,0,255"/>
+			<property name="Extends" value="ammo9mmBulletBall"/>
+			<property name="Stacknumber" value="150"/> <!-- STK ammo low -->
+			<property name="EconomicValue" value="11"/>
+			<effect_group name="ammo762mmBulletBall" tiered="false">
+				<passive_effect name="EntityDamage" operation="base_set" value="1"/>
+				<passive_effect name="BlockDamage" operation="base_set" value="1"/>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" target="other" buff="buffShocked"/>
+			</effect_group>
+		</item>
+		
+		<item name="Balle incendiaire">
+			<property name="CustomIcon" value="ammo762mmBulletBall"/>
+			<property name="CustomIconTint" value="255,0,0"/>
+			<property name="Extends" value="ammo9mmBulletBall"/>
+			<property name="Stacknumber" value="150"/> <!-- STK ammo low -->
+			<property name="EconomicValue" value="11"/>
+			<effect_group name="ammo762mmBulletBall" tiered="false">
+				<passive_effect name="EntityDamage" operation="base_set" value="1"/>
+				<passive_effect name="BlockDamage" operation="base_set" value="1"/>
+			</effect_group>
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" target="other" buff="buffBurningMolotov"/>
+			</effect_group>
+		</item>
+	
+	</append>
+	
+	<append xpath="/items/item[@name='gunRifleT1HuntingRifle']/property[@class='Action0']/property[@name='Magazine_items']/@value">,Balle taser,Balle incendiaire</append>
+	
+	<append xpath="/items/item[@name='gunRifleT3SniperRifle']/property[@class='Action0']/property[@name='Magazine_items']/@value">,Balle taser,Balle incendiaire</append>
+
+</configs>

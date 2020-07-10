@@ -1,0 +1,7 @@
+<configs>
+
+	<set xpath="//item[@name='thrownDynamite']/effect_group[1]/passive_effect[@name='BlockDamage']/@value">1500</set>
+	
+	<set xpath="//item[@name='thrownDynamite']/effect_group[1]/display_value[@name='dExDamageBlock']/@value">1500</set>
+
+</configs>

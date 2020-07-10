@@ -1,0 +1,7 @@
+<configs>
+
+	<remove xpath="//lootgroup[@name='groupQuestMedical']/item[@name='drugFortBites']"/>
+	
+	<remove xpath="//lootgroup[@name='rareMedicine']/item[@name='drugFortBites']"/>
+
+</configs>

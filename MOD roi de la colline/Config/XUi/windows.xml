@@ -1,0 +1,16 @@
+<configs>
+	
+	<append xpath="/windows">
+
+		<window name="ScoreRoiDeLaColline" width="400" height="200" anchor="CenterBottom" pos="-590,500" controller="ToolbeltWindow" color="[white]" visible="{toolbeltvisible}">
+			<rect controller="PlayerStatsWindow">
+				<label depth="2" width="200" pos="-320,150" font_size="25" color="[white]" text="[0000ff]BLEU[-] : {cvar($Bleu)}" justify="left" effect="outline" />
+				<label depth="2" width="200" pos="-320,200" font_size="25" color="[white]" text="[ff0000]ROUGE[-] : {cvar($Rouge)}" justify="left" effect="outline" />
+				<label depth="2" width="200" pos="-320,100" font_size="25" color="[white]" text="[ffff00]JAUNE[-] : {cvar($Jaune)}" justify="left" effect="outline" />
+				<label depth="2" width="200" pos="-320,50" font_size="25" color="[white]" text="[00ff00]VERT[-] : {cvar($Vert)}" justify="left" effect="outline" />
+			</rect>
+		</window>
+
+	</append>
+
+</configs>

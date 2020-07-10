@@ -1,0 +1,26 @@
+<configs>
+
+	<append xpath="/items">
+
+		<item name="Balle +10">
+			<property name="Tags" value="ammo"/>
+			<property name="DisplayType" value="ammoBullet"/>
+			<property name="HoldType" value="45"/>
+			<property name="Meshfile" value="#Other/Items?Misc/sackPrefab.prefab"/>
+			<property name="DropMeshfile" value="#Other/Items?Misc/sack_droppedPrefab.prefab"/>
+			<property name="Material" value="Mbrass"/>
+			<property name="MeltTimePerUnit" value=".4"/>
+			<property name="Stacknumber" value="300"/> <!-- STK ammo high -->
+			<property name="EconomicValue" value="9"/>
+			<property name="Group" value="Ammo/Weapons"/>
+			<effect_group name="ammo9mmBulletBall" tiered="false">
+				<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" target="other" buff="">
+				</triggered_effect>
+			</effect_group>
+		</item>
+
+	</append>
+	
+	<append xpath="//item[@name='gunHandgunT1Pistol']/property[@class='Action0']/property[@name='Magazine_items']/@value">,Balle +10</append>
+
+</configs>

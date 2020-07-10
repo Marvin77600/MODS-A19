@@ -1,5 +1,7 @@
 <configs>
 
 	<remove xpath="/traders/trader_item_groups/trader_item_group[@name='commonBooks']/item[@group='schematicVehiclesCommon']"/>
+	
+	<remove xpath="/traders/trader_item_groups/trader_item_group[@name='vehicleParts']/item[starts-with(@name, 'vehicle')and (not contains(@name, 'Wheels'))]"/>
 
 </configs>
